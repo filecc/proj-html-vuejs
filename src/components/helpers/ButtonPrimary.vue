@@ -1,5 +1,5 @@
 <template>
-    <div class="text-center">
+    <div>
         <a class="btn btn-lg" href="#">{{ text }}</a>
     </div>
 </template>
@@ -19,6 +19,7 @@
         color: white;
     font-size: small;
     transition: all 0.3s ease;
+    text-transform: capitalize;
 
     &:hover {
         background-color: #eee;

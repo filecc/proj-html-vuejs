@@ -1,7 +1,8 @@
 <template>
-    <section class="container text-center">
+    <section class="container py-4">
         <h2 class="text-fg-muted">{{title}}</h2>
         <p class="py-4">{{ content }}</p>
+        <small>{{ smallText }}</small>
     </section>
 </template>
 
@@ -10,7 +11,8 @@
     export default {
         props: {
             title: String,
-            content: String
+            content: String,
+            smallText: String
         }
 }
 </script>
@@ -27,7 +29,6 @@
         color: $fg-primary;
         font-weight: bold;
         font-size: 28px;
-        text-align: center;
         line-height: 30px;
     }
 </style>

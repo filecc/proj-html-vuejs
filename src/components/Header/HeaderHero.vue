@@ -1,6 +1,6 @@
 <template>
     <div class="hero-container">
-        <div class="container p-3 h-100 row flex-column justify-content-center position-relative">
+        <div class="container p-4 h-100 row flex-column justify-content-center position-relative mx-auto">
             <div class="col-12 col-md-6 col-lg-4">
                 <p class="text-uppercase mb-3">fresh & tasty bakery every day</p>
                 <h1 class="py-3">the prefect fresh bread</h1>
