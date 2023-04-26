@@ -21,3 +21,16 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/root";
 @import "bootstrap/scss/bootstrap";
+
+// overrade fonts locations
+$bootstrap-icons-font-src:url("/src/styles/icons-fonts/bootstrap-icons.woff2") format("woff2"),
+url("/src/assets/icons-fonts/bootstrap-icons.woff")  format("woff");
+// bootstrap icons
+@import "bootstrap-icons/font/bootstrap-icons.scss";
+
+/* GOOGE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body{
+    font-family: $work;
+}

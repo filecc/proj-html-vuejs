@@ -1,5 +1,5 @@
 <template>
-  <div class="container bg-white">
+  <div>
     <AppHeader />
     <AppMain />
     <AppFooter />
