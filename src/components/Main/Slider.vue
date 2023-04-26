@@ -2,7 +2,6 @@
     <div class="slider position-relative">
         <div ref="divContainer" :class="classesResponsive" class="img-holder row row-cols-2 flex-nowrap">
             <template v-for="image in images" :key="images.alt">
-                <Transition :name="next ? 'next' : 'prev'">
                     <div>
                         <div class="col position-relative">
                             <img :src="IMG_URL + image.id + IMG_EXT" :alt="image.alt">
@@ -13,7 +12,6 @@
                             <small>{{ image.price }}</small>
                         </div>
                     </div>
-                </Transition>
             </template>
         </div>
         <button @click="prevImages()" class="prev"><i class="bi bi-chevron-left"></i></button>
