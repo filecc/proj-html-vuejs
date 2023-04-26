@@ -1,13 +1,20 @@
 <template>
     <div class="slider pt-5">
         <div class="img-holder row row-cols-2 flex-nowrap">
-            <template v-for="(image, index) in images" :key="image.alt">
+            <template v-for="element in imagesVisible" :key="images[element].alt">
                 <Transition :name="next ? 'next' : 'prev'">
-                    <div v-if="image.visible" class="col p-2 position-relative">
-                        <img :src="IMG_URL + image.id + IMG_EXT" :alt="image.alt">
-                        <div class="description m-2">{{ image.alt }}</div>
+                    <div>
+                        <div class="col position-relative">
+                            <img :src="IMG_URL + images[element].id + IMG_EXT" :alt="images[element].alt">
+                            <div class="description m-2">{{ images[element].alt }}</div>
+                        </div>
+                        <div v-if="images[element].price">
+                            <h6>{{ images[element].alt }}</h6>
+                            <small>{{ images[element].price }}</small>
+                        </div>
                     </div>
                 </Transition>
+               
             </template>
 
             <button @click="prevImages()" class="prev ms-2"><i class="bi bi-chevron-left"></i></button>
@@ -17,53 +24,66 @@
 </template>
 
 <script>
-    export default {
-        data(){
-            return {
-                IMG_URL: '/images/slider-1/image-',
-                IMG_EXT: '.jpg',
-                images: [
-                    {
-                        id: '0',
-                        alt: 'choco chip cookie',
-                        visible: true,
-                    },
-                    {
-                        id: '1',
-                        alt: 'strawberry jam cookies',
-                        visible: true,
-                    },
-                    {
-                        id: '2',
-                        alt: 'cookies with ice-cream',
-                        visible: false,
-                    },
-                    {
-                        id: '3',
-                        alt: 'homemade bread',
-                        visible: false,
-                    },
-                ],
-                next: null,
+
+export default {
+    props: {
+        images: Array,
+        folder: String
+    },
+    data() {
+        return {
+            IMG_URL: '/images/' + this.folder + '/image-',
+            IMG_EXT: '.jpg',
+            next: null,
+            imagesVisible: [0, 1]
+        }
+    },
+    methods: {
+        nextImages() {
+          
+            const imagesCount = this.images.length;
+            const nextFirstImgID = this.imagesVisible[0];
+            const nextSecondImgID = this.imagesVisible[1];
+
+            if ((nextFirstImgID < imagesCount - 2) && (nextSecondImgID <= imagesCount - 1)){
+                this.imagesVisible[0] += 2;
+                if (this.imagesVisible[1] + 2 <= imagesCount-1){
+                    this.imagesVisible[1] += 2;
+                } else {
+                    this.imagesVisible[1] = 1;
+                    this.imagesVisible[0] = 0;
+                }
+               
+            } else {
+                this.imagesVisible[0] = 0;
+                this.imagesVisible[1] = 1;
+               
             }
+
+         
         },
-        methods: {
-            nextImages(){
-                this.next = true;
-                const imagesCount = this.images.length;
-                for(let i=0;i<imagesCount;i++){
-                    this.images[i].visible = !this.images[i].visible
-                }
-            },
-            prevImages(){
-                this.next = false;
-                const imagesCount = this.images.length;
-                for(let i=0;i<imagesCount;i++){
-                    this.images[i].visible = !this.images[i].visible
-                }
+        prevImages() {
+           console.log(this.imagesVisible)
+            const imagesCount = this.images.length;
+            const nextFirstImgID = this.imagesVisible[0];
+
+            if (nextFirstImgID >= 2){
+                this.imagesVisible[0] -= 2;
+                this.imagesVisible[1] -= 2;
+            } else {
+                this.imagesVisible[0] = imagesCount - 2;
+                this.imagesVisible[1] = imagesCount - 1;
             }
+
+           
+
+            console.log(this.imagesVisible)            
+
+           
+
         }
     }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -110,6 +130,22 @@
     img {
         width: 100%;
     }
+}
+
+h6{
+    text-align: center;
+    text-transform: capitalize;
+    color: $fg-primary;
+    font-weight: bold;
+    font-family: $source;
+    padding: .5rem 1rem 0 1rem;
+}
+
+small{
+    text-align: center;
+    display: block;
+    color: $fg-primary;
+    font-size: x-small;
 }
 
 .description:hover {
@@ -162,4 +198,5 @@
 .prev-leave-to {
     transform: translate3d(-100%, 0, 0);
     opacity: 0;
-}</style>
+}
+</style>

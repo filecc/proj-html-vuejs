@@ -8,7 +8,7 @@
                     <ButtonPrimary text="Buy Avada Today!" />
                 </div>
                 <div class="col-12 col-md-8">
-                    <Slider />
+                    <Slider :images="images1" folder="slider-1" />
                 </div>
 
             </div>
@@ -32,7 +32,7 @@
                 <SectionRecap content="Find a freshly baked product perfect for you" smallText="Integer a nibh vitae ex porttitor rutrum et ut velit. Etiam ac felis at leo feugiat placerat. Sed ac nulla id orci tempor convallis sed." />
                <ButtonPrimary text="shop all products" />
             </div>
-
+            <Slider :images="images2" folder="slider-2" />
         </div>
 
     </main>
@@ -43,8 +43,14 @@ import SectionRecap from './Main/SectionRecap.vue';
 import Slider from './Main/Slider.vue';
 import SpecialMomentCard from './Main/SpecialMomentCard.vue';
 import ButtonPrimary from './helpers/ButtonPrimary.vue';
-
+import { imagesSlider1, imagesSlider2 } from '../assets/data/imagesData';
 export default {
+    data() {
+        return {
+            images1: imagesSlider1,
+            images2: imagesSlider2,
+        }
+    },
     components: { SectionRecap, ButtonPrimary, Slider, SpecialMomentCard }
 }
 </script>
