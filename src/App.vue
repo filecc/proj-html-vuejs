@@ -1,15 +1,19 @@
 <template>
-  <div>
-    <h1>Hello</h1>
+  <div class="container bg-white">
+    <AppHeader />
+    <AppMain />
+    <AppFooter />
   </div>
 </template>
 
 <script>
-  export default {
-    
-  }
+import AppFooter from './components/AppFooter.vue';
+import AppHeader from './components/AppHeader.vue';
+import AppMain from './components/AppMain.vue';
+
+export default {
+  components: { AppMain, AppFooter, AppHeader }
+}
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
