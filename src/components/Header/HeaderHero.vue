@@ -8,7 +8,7 @@
                     volutpat. Nullam quis sagittis nibh ac nulla id orci tempor.
                 </p>
                 <div>
-                    <a class="btn btn-lg" href="#">Explore our products</a>
+                    <ButtonSecondary text="Explore our products" />
                 </div>
             </div>
             
@@ -18,9 +18,11 @@
 </template>
 
 <script>
+import ButtonSecondary from '../helpers/ButtonSecondary.vue';
+
     export default {
-        
-    }
+    components: { ButtonSecondary }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -37,18 +39,6 @@ h1 {
     font-weight: bold;
     text-transform: capitalize;
     font-size: 38px;
-}
-
-.btn {
-    background-color: white;
-    color: $fg-primary;
-    font-size: small;
-    transition: all 0.3s ease;
-
-    &:hover {
-        background-color: $fg-primary;
-        color: white;
-    }
 }
 
 .hero-container {

@@ -12,7 +12,7 @@ $primary: $fg-primary;
 // adding custom colors
 $custom-colors: (
  // custom color "fg-body": $fg-body,
- 
+ 'fg-muted': $fg-muted,
 );
 // Merge the maps of colors
 $theme-colors: map-merge($theme-colors, $custom-colors);

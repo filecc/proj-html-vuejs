@@ -16,3 +16,4 @@ export const useGeneral = defineStore('general', {
         }
     }
 })
+
