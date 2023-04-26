@@ -1,8 +1,8 @@
 <template>
     <section class="container py-4">
-        <h2 class="text-fg-muted">{{title}}</h2>
-        <p class="py-4">{{ content }}</p>
-        <small>{{ smallText }}</small>
+        <h2 v-if="title" class="text-fg-muted">{{title}}</h2>
+        <p v-if="content" class="py-4">{{ content }}</p>
+        <small v-if="smallText">{{ smallText }}</small>
     </section>
 </template>
 

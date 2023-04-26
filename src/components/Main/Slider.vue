@@ -1,25 +1,23 @@
 <template>
-    <div class="slider pt-5">
-        <div class="img-holder row row-cols-2 flex-nowrap">
-            <template v-for="element in imagesVisible" :key="images[element].alt">
+    <div class="slider position-relative">
+        <div ref="divContainer" :class="classesResponsive" class="img-holder row row-cols-2 flex-nowrap">
+            <template v-for="image in images" :key="images.alt">
                 <Transition :name="next ? 'next' : 'prev'">
                     <div>
                         <div class="col position-relative">
-                            <img :src="IMG_URL + images[element].id + IMG_EXT" :alt="images[element].alt">
-                            <div class="description m-2">{{ images[element].alt }}</div>
+                            <img :src="IMG_URL + image.id + IMG_EXT" :alt="image.alt">
+                            <div class="description">{{ image.alt }}</div>
                         </div>
-                        <div v-if="images[element].price">
-                            <h6>{{ images[element].alt }}</h6>
-                            <small>{{ images[element].price }}</small>
+                        <div v-if="image.price">
+                            <h6>{{ image.alt }}</h6>
+                            <small>{{ image.price }}</small>
                         </div>
                     </div>
                 </Transition>
-               
             </template>
-
-            <button @click="prevImages()" class="prev ms-2"><i class="bi bi-chevron-left"></i></button>
-            <button @click="nextImages()" class="next me-2"><i class="bi bi-chevron-right"></i></button>
         </div>
+        <button @click="prevImages()" class="prev"><i class="bi bi-chevron-left"></i></button>
+        <button @click="nextImages()" class="next"><i class="bi bi-chevron-right"></i></button>
     </div>
 </template>
 
@@ -28,61 +26,27 @@
 export default {
     props: {
         images: Array,
-        folder: String
+        folder: String,
+        classesResponsive: String,
+        increment: Number,
     },
     data() {
         return {
             IMG_URL: '/images/' + this.folder + '/image-',
             IMG_EXT: '.jpg',
-            next: null,
-            imagesVisible: [0, 1]
         }
     },
     methods: {
         nextImages() {
-          
-            const imagesCount = this.images.length;
-            const nextFirstImgID = this.imagesVisible[0];
-            const nextSecondImgID = this.imagesVisible[1];
-
-            if ((nextFirstImgID < imagesCount - 2) && (nextSecondImgID <= imagesCount - 1)){
-                this.imagesVisible[0] += 2;
-                if (this.imagesVisible[1] + 2 <= imagesCount-1){
-                    this.imagesVisible[1] += 2;
-                } else {
-                    this.imagesVisible[1] = 1;
-                    this.imagesVisible[0] = 0;
-                }
-               
-            } else {
-                this.imagesVisible[0] = 0;
-                this.imagesVisible[1] = 1;
-               
-            }
-
-         
+          const scrollableArea = this.$refs['divContainer'];
+          scrollableArea.scrollBy(scrollableArea.offsetWidth, 0)
         },
         prevImages() {
-           console.log(this.imagesVisible)
-            const imagesCount = this.images.length;
-            const nextFirstImgID = this.imagesVisible[0];
-
-            if (nextFirstImgID >= 2){
-                this.imagesVisible[0] -= 2;
-                this.imagesVisible[1] -= 2;
-            } else {
-                this.imagesVisible[0] = imagesCount - 2;
-                this.imagesVisible[1] = imagesCount - 1;
-            }
-
-           
-
-            console.log(this.imagesVisible)            
-
-           
-
+            const scrollableArea = this.$refs['divContainer'];
+            scrollableArea.scrollBy(- scrollableArea.offsetWidth, 0)
         }
-    }
+    },
+
 }
 </script>
 
@@ -90,8 +54,6 @@ export default {
 @use '../../styles/variables' as *;
 
 .slider {
-    overflow: hidden;
-
 
     & button {
         position: absolute;
@@ -126,6 +88,14 @@ export default {
 
 .img-holder {
     position: relative;
+    scroll-behavior: smooth;
+    overflow: auto;
+    &::-webkit-scrollbar {
+    display: none;
+    }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
 
     img {
         width: 100%;
@@ -169,7 +139,7 @@ small{
     color: white;
     font-size: 20px;
     font-weight: bold;
-    padding: 2rem;
+   
 }
 
 .next-enter-active,

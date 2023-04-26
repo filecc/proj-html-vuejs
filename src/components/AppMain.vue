@@ -7,7 +7,7 @@
                         content="All our delectable pastries are backed fresh in our Kitchen very morning, and are made with all-natural, all organic ingredients." />
                     <ButtonPrimary text="Buy Avada Today!" />
                 </div>
-                <div class="col-12 col-md-8">
+                <div class="col-12 col-md-8 mt-5 mt-md-0">
                     <Slider :images="images1" folder="slider-1" />
                 </div>
 
@@ -28,11 +28,17 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-5 text-center">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-3 mt-5 text-center">
                 <SectionRecap content="Find a freshly baked product perfect for you" smallText="Integer a nibh vitae ex porttitor rutrum et ut velit. Etiam ac felis at leo feugiat placerat. Sed ac nulla id orci tempor convallis sed." />
                <ButtonPrimary text="shop all products" />
             </div>
-            <Slider :images="images2" folder="slider-2" />
+            <div class="col-12 col-md-9 mt-5 text-center">
+                <Slider :images="images2" folder="slider-2" classes-responsive="row-cols-md-4" />
+            </div>
+           
+            </div>
+            
         </div>
 
     </main>
