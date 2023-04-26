@@ -10,7 +10,9 @@
             <div class="hm-container">
                 <div @click="GENERAL.menuToggle" class="hamburger">
                     <div :class="GENERAL.menuOpen && 'on'" class="hm-line one"></div>
-                    <div :class="GENERAL.menuOpen && 'on'" class="hm-line two"></div>
+                    <Transition name="mid">
+                        <div v-if="!GENERAL.menuOpen" class="hm-line two"></div>
+                    </Transition>
                     <div :class="GENERAL.menuOpen && 'on'" class="hm-line three"></div>
                 </div>
             </div>
@@ -36,9 +38,9 @@ import { useGeneral } from '../../assets/data/store'
 
 <style lang="scss" scoped>
 @use '../../styles/variables' as *;
-  /* Variables */
-  $width: 3rem;
-  $toggleBG: $fg-primary;
+/* Variables */
+$width: 3rem;
+$toggleBG: $fg-primary;
 
 .logo-container {
     width: 150px;
@@ -55,50 +57,56 @@ a {
     font-size: small;
 }
 
+.mid-enter-active,
+.mid-leave-active {
+  transition: all 0.3s ease;
+}
+
+.mid-enter-from,
+.mid-leave-to {
+transform: translate3d(100%, 0, 0);
+  opacity: 0;
+  width: 0;
+}
+
 
 .hm-container {
-  position: relative;
-  width: var($width);
-  height: var($width);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    position: relative;
+    width: var($width);
+    height: var($width);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hamburger {
-  width: calc($width / 2);
-  height: calc($width / 3);
-  display: block;
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+    width: calc($width / 2);
+    height: calc($width / 3);
+    display: block;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .hm-line {
-  background-color: $toggleBG;
-  width: calc(($width) * .5);
-  height: calc(($width) * .04);
-  position: relative;
-  transition: 0.3s ease all;
-  border-radius: 5px;
+    background-color: $toggleBG;
+    width: calc(($width) * .5);
+    height: calc(($width) * .04);
+    position: relative;
+    transition: 0.3s ease all;
+    border-radius: 5px;
+
+    &.one.on {
+        position: absolute;
+        transform: rotateZ(45deg);
+    }
+
+    &.three.on {
+        position: absolute;
+        transform: rotateZ(-45deg);
+
+    }
 }
-
-.hm-line.one.on {
-  position: absolute;
-  transform: rotateZ(45deg);
- 
-}
-
-.hm-line.two.on {
- width: 0;
-}
-
-.hm-line.three.on {
-  position: absolute;
-  transform: rotateZ(-45deg);
-
-}
-
 </style>
