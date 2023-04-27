@@ -96,6 +96,33 @@
                     bg="#F3EEF4"
                 />
             </div>
+
+            <!-- social cards -->
+            <div class="py-5">
+                <div class="row gx-0 socialCards">
+                    <div class="col-12 col-md-3 px-2">
+                        <SocialCard image="social-0.jpg" />
+                    </div>
+                   
+                    <div class="col px-2 py-5 py-md-0 px-md-4 text-center">
+                        <div class="socialCentralCard">
+                            <small class="text-uppercase">made for shargins</small>
+                            <h2 class="text-primary fw-bold py-4">Let's stay in touch</h2>
+                            <ButtonPrimary text="follow us" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3 px-2 ">
+                        <SocialCard image="social-1.jpg" />
+                    </div>
+                </div>
+
+                <div class="row mt-4 gx-0 socialCards">
+                    <div v-for="element in [2,3,4,5]" class="col-12 col-md-3 px-2 py-4 py-md-0">
+                        <SocialCard :image="'social-'+element+'.jpg'" />
+                    </div>
+                  
+                </div>
+            </div>
             
 
         </div>
@@ -111,6 +138,7 @@ import ButtonPrimary from './helpers/ButtonPrimary.vue';
 import { imagesSlider1, imagesSlider2 } from '../assets/data/imagesData';
 import SectionProcessImageCard from './Main/SectionProcessImageCard.vue';
 import BakeryLocation from './Main/BakeryLocation.vue';
+import SocialCard from './Main/SocialCard.vue';
 export default {
     data() {
         return {
@@ -118,8 +146,25 @@ export default {
             images2: imagesSlider2,
         }
     },
-    components: { SectionRecap, ButtonPrimary, Slider, SpecialMomentCard, SectionProcessImageCard, BakeryLocation }
+    components: { SectionRecap, ButtonPrimary, Slider, SpecialMomentCard, SectionProcessImageCard, BakeryLocation, SocialCard }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use '../styles/variables' as *;
+
+.socialCards{
+    min-height: 350px;
+}
+.socialCentralCard{
+    display: grid;
+    place-content: center;
+    background: linear-gradient(#F3EEF4, #F8F1F2);
+    height: 100%;
+    min-height: 350px;
+    
+    h2{
+        font-family: $source;
+    }
+}
+</style>
