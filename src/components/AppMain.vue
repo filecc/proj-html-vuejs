@@ -1,6 +1,7 @@
 <template>
     <main class="py-5">
         <div class="container p-4">
+            <!-- slider 1 -->
             <div class="row align-items-center">
                 <div class="col-12 col-md-4 text-center text-md-start">
                     <SectionRecap title="our products"
@@ -13,6 +14,7 @@
 
             </div>
 
+            <!-- recap sections -->
             <div class="mt-5 text-center">
                 <SectionRecap title="corporate & weddings" content="Baking Special Moments" />
                 <div class="row row-cols-1 row-cols-md-2">
@@ -28,6 +30,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- slider 2 -->
             <div class="row align-items-center">
                 <div class="col-12 col-md-3 mt-5 text-center">
                 <SectionRecap content="Find a freshly baked product perfect for you" smallText="Integer a nibh vitae ex porttitor rutrum et ut velit. Etiam ac felis at leo feugiat placerat. Sed ac nulla id orci tempor convallis sed." />
@@ -38,6 +42,8 @@
             </div>
            
             </div>
+
+            <!-- process -->
             <div class="py-5">
                 <SectionProcessImageCard 
                     :with-image="true"
@@ -73,6 +79,25 @@
                 
             </div>
             
+            <!-- bakery locations -->
+            <div class="py-5 row row-cols-1 row-cols-md-2 px-4">
+                <BakeryLocation 
+                    image="visit-00.jpg" 
+                    city="New York" 
+                    telephone="1.800.458.556"
+                    openings="9:00 AM - 6:00 PM"
+                    bg="#F8F1F2"
+                />
+                <BakeryLocation 
+                    image="visit-01.jpg" 
+                    city="London" 
+                    telephone="1.800.458.556"
+                    openings="9:00 AM - 6:00 PM"
+                    bg="#F3EEF4"
+                />
+            </div>
+            
+
         </div>
 
     </main>
@@ -85,6 +110,7 @@ import SpecialMomentCard from './Main/SpecialMomentCard.vue';
 import ButtonPrimary from './helpers/ButtonPrimary.vue';
 import { imagesSlider1, imagesSlider2 } from '../assets/data/imagesData';
 import SectionProcessImageCard from './Main/SectionProcessImageCard.vue';
+import BakeryLocation from './Main/BakeryLocation.vue';
 export default {
     data() {
         return {
@@ -92,7 +118,7 @@ export default {
             images2: imagesSlider2,
         }
     },
-    components: { SectionRecap, ButtonPrimary, Slider, SpecialMomentCard, SectionProcessImageCard }
+    components: { SectionRecap, ButtonPrimary, Slider, SpecialMomentCard, SectionProcessImageCard, BakeryLocation }
 }
 </script>
 
