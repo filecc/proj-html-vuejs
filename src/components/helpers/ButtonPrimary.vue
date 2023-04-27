@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <a class="btn btn-lg" href="#">{{ text }}</a>
+    <div class="w-100">
+        <a class="btn btn-lg w-100" href="#">{{ text }}</a>
     </div>
 </template>
 

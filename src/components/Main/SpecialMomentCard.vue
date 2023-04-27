@@ -6,6 +6,7 @@
             <p class="m-0 p-0">{{ subtitle }}</p>
             <h3 class="py-3">  {{ title }}</h3>
             <ButtonPrimary :text="buttonText" />
+           
         </div>
     </div>
 </template>

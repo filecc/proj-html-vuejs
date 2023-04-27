@@ -6,7 +6,10 @@
                 <div class="col-12 col-md-4 text-center text-md-start">
                     <SectionRecap title="our products"
                         content="All our delectable pastries are backed fresh in our Kitchen very morning, and are made with all-natural, all organic ingredients." />
-                    <ButtonPrimary text="Buy Avada Today!" />
+                        <div class="col-6 col-md-8 mx-auto mx-md-0">
+                            <ButtonPrimary text="Buy Avada Today!" />
+                        </div>
+                    
                 </div>
                 <div class="col-12 col-md-8 mt-5 mt-md-0">
                     <Slider :images="images1" folder="slider-1" :price-in-description="true" :category-in-description="true" />
