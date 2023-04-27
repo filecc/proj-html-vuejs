@@ -3,21 +3,29 @@ export const imagesSlider1 = [
         id: '0',
         alt: 'choco chip cookie',
         visible: true,
+        price: '$18.00 - $32.00',
+        category: ['cookies', 'pastries']
     },
     {
         id: '1',
         alt: 'strawberry jam cookies',
         visible: true,
+        price: '$36.00 - $60.00',
+        category: ['cookies', 'pastries']
     },
     {
         id: '2',
         alt: 'cookies with ice-cream',
         visible: false,
+        price: '$18.00 - $34.00',
+        category: ['cookies', 'pastries']
     },
     {
         id: '3',
         alt: 'homemade bread',
         visible: false,
+        price: '$26.00 - $68.00',
+        category: ['breads', 'pastries']
     },
 ];
 

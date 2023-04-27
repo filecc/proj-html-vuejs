@@ -8,7 +8,7 @@
                     <ButtonPrimary text="Buy Avada Today!" />
                 </div>
                 <div class="col-12 col-md-8 mt-5 mt-md-0">
-                    <Slider :images="images1" folder="slider-1" />
+                    <Slider :images="images1" folder="slider-1" :price-in-description="true" :category-in-description="true" />
                 </div>
 
             </div>
@@ -34,7 +34,7 @@
                <ButtonPrimary text="shop all products" />
             </div>
             <div class="col-12 col-md-9 mt-5 text-center">
-                <Slider :images="images2" folder="slider-2" classes-responsive="row-cols-md-4" />
+                <Slider :images="images2" folder="slider-2" classes-responsive="row-cols-md-4" :priceInBottom="true" />
             </div>
            
             </div>

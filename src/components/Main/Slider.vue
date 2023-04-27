@@ -2,16 +2,26 @@
     <div class="slider position-relative">
         <div ref="divContainer" :class="classesResponsive" class="img-holder row row-cols-2 flex-nowrap">
             <template v-for="image in images" :key="images.alt">
-                    <div>
-                        <div class="col position-relative">
-                            <img :src="IMG_URL + image.id + IMG_EXT" :alt="image.alt">
-                            <div class="description">{{ image.alt }}</div>
-                        </div>
-                        <div v-if="image.price">
-                            <h6>{{ image.alt }}</h6>
-                            <small>{{ image.price }}</small>
+                <div>
+                    <div class="col position-relative">
+                        <img :src="IMG_URL + image.id + IMG_EXT" :alt="image.alt">
+                        <div class="description">
+                            <div>
+                                <h4 class="text-white fw-bold">{{ image.alt }}</h4>
+                                <small v-if="categoryInDescription" class="text-capitalize text-white">{{
+                                    image.category.join(', ') }}</small>
+                                <p v-if="priceInDescription">{{ image.price }}</p>
+                            </div>
+
+
+
                         </div>
                     </div>
+                    <div v-if="priceInBottom">
+                        <h6>{{ image.alt }}</h6>
+                        <small>{{ image.price }}</small>
+                    </div>
+                </div>
             </template>
         </div>
         <button @click="prevImages()" class="prev"><i class="bi bi-chevron-left"></i></button>
@@ -27,22 +37,38 @@ export default {
         folder: String,
         classesResponsive: String,
         increment: Number,
+        priceInDescription: Boolean,
+        categoryInDescription: Boolean,
+        priceInBottom: Boolean
     },
     data() {
         return {
             IMG_URL: '/images/' + this.folder + '/image-',
             IMG_EXT: '.jpg',
+            scrollableArea: null,
+            containerWidth: null,
         }
+    },
+    mounted() {
+        this.scrollableArea = this.$refs["divContainer"];
+        this.containerWidth = this.scrollableArea.offsetWidth;
     },
     methods: {
         nextImages() {
-          const scrollableArea = this.$refs['divContainer'];
-          scrollableArea.scrollBy(scrollableArea.offsetWidth, 0)
+            this.scrollableArea.scrollBy(this.containerWidth, 0);
+            if (
+                this.scrollableArea.scrollLeft + this.containerWidth >=
+                this.scrollableArea.scrollWidth
+            ) {
+                this.scrollableArea.scrollLeft = 0;
+            }
         },
         prevImages() {
-            const scrollableArea = this.$refs['divContainer'];
-            scrollableArea.scrollBy(- scrollableArea.offsetWidth, 0)
-        }
+            this.scrollableArea.scrollBy(-this.containerWidth, 0);
+            if (this.scrollableArea.scrollLeft === 0) {
+                this.scrollableArea.scrollLeft = this.containerWidth * this.images.length;
+            }
+        },
     },
 
 }
@@ -88,19 +114,20 @@ export default {
     position: relative;
     scroll-behavior: smooth;
     overflow: auto;
+
     &::-webkit-scrollbar {
-    display: none;
+        display: none;
     }
 
-  -ms-overflow-style: none;
-  scrollbar-width: none; 
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 
     img {
         width: 100%;
     }
 }
 
-h6{
+h6 {
     text-align: center;
     text-transform: capitalize;
     color: $fg-primary;
@@ -109,7 +136,7 @@ h6{
     padding: .5rem 1rem 0 1rem;
 }
 
-small{
+small {
     text-align: center;
     display: block;
     color: $fg-primary;
@@ -137,7 +164,7 @@ small{
     color: white;
     font-size: 20px;
     font-weight: bold;
-   
+
 }
 
 .next-enter-active,
