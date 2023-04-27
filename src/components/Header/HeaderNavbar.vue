@@ -1,10 +1,13 @@
 <template>
-    <div class="bg-white d-flex justify-content-between align-items-center">
+    <div class="d-flex justify-content-between align-items-center">
         <div class="logo-container">
             <img src="/images/logo.png" alt="logo">
         </div>
         <div class="d-flex align-items-center justify-content-around gap-3">
-            <a class="" href="#">ACCOUNT</a>
+            <div class="linksContainer">
+                <a v-for="link in links" href="">{{ link.text }}</a>
+            </div>
+            <a class="account" href="#">ACCOUNT</a>
             <a href="#"> <i class="bi bi-cart-fill text-primary"></i></a>
             <!-- hamburger menu -->
             <div class="hm-container">
@@ -24,11 +27,12 @@
 
 <script>
 import { useGeneral } from '../../assets/data/store'
-
+import { links } from '../../assets/data/linkData';
     export default {
         data(){
             return {
-                GENERAL: useGeneral()
+                GENERAL: useGeneral(),
+                links
             }
         }
     }
@@ -42,6 +46,38 @@ import { useGeneral } from '../../assets/data/store'
 $width: 3rem;
 $toggleBG: $fg-primary;
 
+.linksContainer{
+    @media screen and (max-width: 768px) {
+       display: none; 
+    }
+    display: flex;
+    gap: 1rem;
+    text-transform: uppercase;
+}
+a{
+        position: relative;
+        
+
+        &:before{
+        transition: all .3s ease;
+        content: '';
+        width: 100%;
+        height: 1px;
+        background-color: $fg-primary;
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        }
+
+        &:hover{
+
+            &:before{
+                top: 100%;
+                bottom: 0;
+                opacity: 1;
+            }
+        }
+    }
 .logo-container {
     width: 150px;
 
@@ -70,6 +106,9 @@ a {
 
 
 .hm-container {
+    @media screen and (min-width: 768px) {
+       display: none; 
+    }
     position: relative;
     width: var($width);
     height: var($width);
