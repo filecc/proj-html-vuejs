@@ -117,7 +117,7 @@
                 </div>
 
                 <div class="row mt-4 gx-0 socialCards">
-                    <div v-for="element in [2,3,4,5]" class="col-12 col-md-3 px-2 py-4 py-md-0">
+                    <div v-for="element in [2,3,4,5]" :key="'social'+element" class="col-12 col-md-3 px-2 py-4 py-md-0">
                         <SocialCard :image="'social-'+element+'.jpg'" />
                     </div>
                   
