@@ -123,7 +123,6 @@
                   
                 </div>
             </div>
-            
 
         </div>
 
@@ -139,6 +138,7 @@ import { imagesSlider1, imagesSlider2 } from '../assets/data/imagesData';
 import SectionProcessImageCard from './Main/SectionProcessImageCard.vue';
 import BakeryLocation from './Main/BakeryLocation.vue';
 import SocialCard from './Main/SocialCard.vue';
+
 export default {
     data() {
         return {
