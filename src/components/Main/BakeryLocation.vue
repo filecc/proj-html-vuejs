@@ -8,11 +8,11 @@
             <h2 class="text-primary fw-bold py-3">{{ city }}</h2>
             <div class="d-flex flex-column flex-lg-row justify-content-between align-content-center gap-3">
                 <div>
-                <small class="d-block py-3">CALL US</small>
+                <small class="d-block py-2">CALL US</small>
                 <span>{{ telephone }}</span>
             </div>
             <div> 
-                <small class="d-block py-3">OPEN ALL WEEK</small>
+                <small class="d-block py-2">OPEN ALL WEEK</small>
                 <span>{{ openings }}</span>
             </div>
             <div class="d-flex align-items-center justify-content-center">
@@ -58,4 +58,18 @@ import ButtonSecondary from '../helpers/ButtonSecondary.vue';
             }
         }
     }
+
+    small{
+        font-size: 10px;
+        @media screen and (max-width: 769px) {
+            font-size: 14px;
+        }
+    }
+    span{
+        font-size: 12px;
+        @media screen and (max-width: 769px) {
+            font-size: 18px;
+        }
+    }
+    
 </style>
