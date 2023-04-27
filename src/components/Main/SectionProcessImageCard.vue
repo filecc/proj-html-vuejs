@@ -57,6 +57,10 @@
         font-size: 35px;
         line-height: 42px;
         padding: 1rem 0;
+        @media screen and (max-width: 768px) {
+            font-size: 28px;
+            line-height: 32px;
+        }
     }
     span {
         color: rgb(67, 65, 65);
