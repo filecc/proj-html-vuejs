@@ -5,7 +5,7 @@
         </div>
         <div class="d-flex align-items-center justify-content-around gap-3">
             <div class="linksContainer">
-                <a v-for="link in links" href="">{{ link.text }}</a>
+                <a v-for="link in links" :href="link.href">{{ link.text }}</a>
             </div>
             <a class="account" href="#">ACCOUNT</a>
             <a href="#"> <i class="bi bi-cart-fill text-primary"></i></a>

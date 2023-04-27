@@ -7,7 +7,7 @@
             </div>
            <div class="col-12 col-md-10">
             <div class="linksContainer">
-                <a v-for="link in links" href="">{{ link.text }}</a>
+                <a v-for="link in links" :href="link.href">{{ link.text }}</a>
             </div>
            </div>
         </div>

@@ -18,7 +18,7 @@ import HeaderHero from './Header/HeaderHero.vue';
 
 <style lang="scss" scoped>
 .hero-container {
-    height: 500px;
+    min-height: 500px;
     background: url('/images/hero-bg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
