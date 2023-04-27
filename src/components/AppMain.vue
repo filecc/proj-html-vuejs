@@ -38,6 +38,40 @@
             </div>
            
             </div>
+            <div class="py-5">
+                <SectionProcessImageCard 
+                    :with-image="true"
+                    title="Tell us what you have in mind" 
+                    number="01"
+                    small-text="manual ingredients selection"
+                    content="Cras consequat lectus vestibulum tortor pulvinar, quis euismod nisl varius. Ut eu laoreet ex. Aliquam erat volutpat. Nullam quis sagittis nibh. Morbi consectetur ultricies ante ac congue. Donec lorem erat, finibus in velit placerat, rutrum augue."
+                    image="process-01.jpg"
+                />
+                <div class="row row-cols-1 row-cols-md-2 gx-0">
+                    <SectionProcessImageCard 
+                    :with-image="true"
+                    title="We Start Baking" 
+                    number="02"
+                    small-text="sweet & delicious"
+                    content="Cras consequat lectus vestibulum tortor pulvinar, quis euismod nisl varius. Ut eu laoreet ex. Aliquam erat volutpat. Nullam quis sagittis nibh. Morbi consectetur ultricies ante ac congue. Donec lorem erat, finibus in velit placerat, rutrum augue."
+                    image="process-02.jpg"
+                    />
+                    <SectionProcessImageCard 
+                        small-text="dont just take our word for it"
+                        content="&ldquo;Finally found an alternative to the mass produced products. Something that incorporates real organic ingredients, nutrient dense wellness while promoting sustainability and activity.&rdquo;"
+                        person="Rachel Cooper, Founder"
+                    />
+                </div>
+                <SectionProcessImageCard 
+                    :with-image="true"
+                    title="Delivered to your home" 
+                    number="03"
+                    small-text="baked to order & gift wrapped"
+                    content="Cras consequat lectus vestibulum tortor pulvinar, quis euismod nisl varius. Ut eu laoreet ex. Aliquam erat volutpat. Nullam quis sagittis nibh. Morbi consectetur ultricies ante ac congue. Donec lorem erat, finibus in velit placerat, rutrum augue."
+                    image="process-03.jpg"
+                    />
+                
+            </div>
             
         </div>
 
@@ -50,6 +84,7 @@ import Slider from './Main/Slider.vue';
 import SpecialMomentCard from './Main/SpecialMomentCard.vue';
 import ButtonPrimary from './helpers/ButtonPrimary.vue';
 import { imagesSlider1, imagesSlider2 } from '../assets/data/imagesData';
+import SectionProcessImageCard from './Main/SectionProcessImageCard.vue';
 export default {
     data() {
         return {
@@ -57,7 +92,7 @@ export default {
             images2: imagesSlider2,
         }
     },
-    components: { SectionRecap, ButtonPrimary, Slider, SpecialMomentCard }
+    components: { SectionRecap, ButtonPrimary, Slider, SpecialMomentCard, SectionProcessImageCard }
 }
 </script>
 
