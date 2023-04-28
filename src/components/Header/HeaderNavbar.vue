@@ -27,7 +27,7 @@
         <div class="mt-3 py-3 mobile-menu outer bg-white rounded" v-if="GENERAL.menuOpen">
            
             <ul class="p-0 m-0 text-center">
-                <li class="mb-2 inner" v-for="link in links"><a class="text-uppercase" href="">{{ link.text }}</a></li>
+                <li class="mb-2 inner" v-for="link in links" :key="link.text"><a class="text-uppercase" :href="link.href">{{ link.text }}</a></li>
             </ul>
             
         </div>
