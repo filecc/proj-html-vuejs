@@ -83,6 +83,10 @@
             </div>
             
             <!-- bakery locations -->
+            <div class="text-center">
+                <SectionRecap title="locations" content="Visit Our Bakery" />
+            </div>
+            
             <div class="py-5 row row-cols-1 row-cols-md-2 px-4">
                 <BakeryLocation 
                     image="visit-00.jpg" 

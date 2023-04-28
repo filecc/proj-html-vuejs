@@ -1,5 +1,5 @@
 <template>
-    <section class="container py-4">
+    <section class="container">
         <h2 v-if="title" class="text-fg-muted">{{title}}</h2>
         <p v-if="content" class="py-4">{{ content }}</p>
         <small v-if="smallText">{{ smallText }}</small>
