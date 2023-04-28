@@ -12,9 +12,6 @@
                                     image.category.join(', ') }}</small>
                                 <p v-if="priceInDescription">{{ image.price }}</p>
                             </div>
-
-
-
                         </div>
                     </div>
                     <div v-if="priceInBottom">
@@ -65,6 +62,7 @@ export default {
         },
         prevImages() {
             this.scrollableArea.scrollBy(-this.containerWidth, 0);
+            
             if (this.scrollableArea.scrollLeft === 0) {
                 this.scrollableArea.scrollLeft = this.containerWidth * this.images.length;
             }

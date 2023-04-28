@@ -23,6 +23,16 @@
         </div>
 
     </div>
+    <Transition name="nested" duration="550">
+        <div class="mt-3 py-3 mobile-menu outer bg-white rounded" v-if="GENERAL.menuOpen">
+           
+            <ul class="p-0 m-0 text-center">
+                <li class="mb-2 inner" v-for="link in links"><a class="text-uppercase" href="">{{ link.text }}</a></li>
+            </ul>
+            
+        </div>
+    </Transition>
+    
 </template>
 
 <script>
@@ -91,6 +101,47 @@ a{
 a {
     text-decoration: none;
     font-size: small;
+}
+.mobile-menu{
+    transition: height 0.3s ease;
+}
+ul{
+    list-style: none;
+}
+
+.nested-enter-active, .nested-leave-active {
+	transition: all 0.3s ease-in-out;
+}
+/* delay leave of parent element */
+.nested-leave-active {
+  transition-delay: 0.25s;
+}
+
+.nested-enter-from,
+.nested-leave-to {
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+/* we can also transition nested elements using nested selectors */
+.nested-enter-active .inner,
+.nested-leave-active .inner { 
+  transition: all 0.3s ease-in-out;
+}
+/* delay enter of nested element */
+.nested-enter-active .inner {
+	transition-delay: 0.25s;
+}
+
+.nested-enter-from .inner,
+.nested-leave-to .inner {
+  transform: translateX(30px);
+  /*
+  	Hack around a Chrome 96 bug in handling nested opacity transitions.
+    This is not needed in other browsers or Chrome 99+ where the bug
+    has been fixed.
+  */
+  opacity: 0.001;
 }
 
 .mid-enter-active,
